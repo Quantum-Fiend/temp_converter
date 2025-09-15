@@ -1,0 +1,12 @@
+{
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "off",
+  "workbench.list.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+  "background.smoothImageRendering": true,
+  "editor.cursorBlinking": "expand",
+  "editor.experimentalGpuAcceleration": "on",
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.enableImages": true,
+  "editor.scrollbar.horizontal": "hidden"
+}

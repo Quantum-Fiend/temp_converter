@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🌡️ Temperature Converter</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      background: #121212;
+      color: #e0e0e0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .converter-container {
+      background: #1e1e1e;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      width: 350px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      user-select: none;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 6px;
+      font-weight: 600;
+      user-select: none;
+      text-align: left;
+    }
+
+    select, input[type="number"] {
+      width: 100%;
+      padding: 10px 12px 10px 40px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #2a2a2a;
+      color: #ddd;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      box-shadow: inset 2px 2px 5px #1a1a1a, inset -2px -2px 5px #353535;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    select:hover, input[type="number"]:hover,
+    select:focus, input[type="number"]:focus {
+      background: #3a3a3a;
+      box-shadow: inset 4px 4px 8px #151515, inset -4px -4px 8px #454545;
+      color: #fff;
+    }
+
+    /* Add left padding to accommodate SVG */
+    select {
+      padding-left: 50px;
+    }
+
+    /* SVG icon wrapper for select */
+    .select-wrapper {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .select-wrapper svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: #bbb;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+      transition: fill 0.3s ease;
+    }
+
+    select:hover + svg,
+    select:focus + svg {
+      fill: #fff;
+    }
+
+    /* SVG icon wrapper for input */
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-wrapper svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: #bbb;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+      transition: fill 0.3s ease;
+    }
+
+    input[type="number"]:hover + svg,
+    input[type="number"]:focus + svg {
+      fill: #fff;
+    }
+
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(45deg, #ff6a00, #ee0979);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(238, 9, 121, 0.6);
+      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+      user-select: none;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #ee0979, #ff6a00);
+      box-shadow: 0 6px 20px rgba(255, 106, 0, 0.8);
+      transform: scale(1.05);
+    }
+
+    #result {
+      margin-top: 28px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #ffa726;
+      user-select: none;
+      min-height: 32px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="converter-container" role="main" aria-label="Temperature Converter">
+    <h1>🌡️ Temperature Converter 🔥❄️</h1>
+
+    <label for="conversion-type">Convert:</label>
+    <div class="select-wrapper">
+      <select id="conversion-type">
+        <option value="c-to-f">Celsius to Fahrenheit</option>
+        <option value="f-to-c">Fahrenheit to Celsius</option>
+      </select>
+      <!-- Celsius SVG icon -->
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M12 2a9 9 0 0 1 9 9v2a9 9 0 0 1-18 0v-2a9 9 0 0 1 9-9zm0 16a7 7 0 0 0 7-7v-2a7 7 0 0 0-14 0v2a7 7 0 0 0 7 7z"/>
+      </svg>
+    </div>
+
+    <label for="temperature-input">Enter Temperature:</label>
+    <div class="input-wrapper">
+      <input type="number" id="temperature-input" placeholder="e.g. 37" />
+      <!-- Thermometer SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M14 14.76V6a2 2 0 0 0-4 0v8.76a4 4 0 1 0 4 0z"/>
+      </svg>
+    </div>
+
+    <button id="convert-btn">Convert 🔄</button>
+
+    <div id="result" role="region" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+<script src="index.js"></script>
+</body>
+</html>
