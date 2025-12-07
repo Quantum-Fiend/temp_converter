@@ -1,0 +1,13 @@
+# Ignore compiled Wasm binary
+main.wasm
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
